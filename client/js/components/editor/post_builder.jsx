@@ -10,6 +10,7 @@ import _                                                    from 'lodash';
 import Tools                                                from './tools.jsx';
 import StyleMap                                             from './style_map.jsx';
 import BlocksDisplay                                        from './blocks_display.jsx';
+import BlockRenderer                                        from './block_renderer.jsx';
 
 export default class PostBuilder extends React.Component{
   
@@ -18,7 +19,7 @@ export default class PostBuilder extends React.Component{
     this.state = {
       editorState: this.initEditorState(props)
     };
-    this.onChange = (editorState) => {bnpm
+    this.onChange = (editorState) => {
       this.setState({editorState});
     };
   }
@@ -65,6 +66,12 @@ export default class PostBuilder extends React.Component{
     this.onChange(RichUtils.toggleInlineStyle(this.state.editorState, tool));
   }
 
+  setBlockType(e, blockType){
+    e.stopPropagation();
+    this.onChange( RichUtils.toggleBlockType(this.state.editorState, blockType) );
+  }
+
+
   getStyles(){
     return {
       container: {
@@ -82,10 +89,10 @@ export default class PostBuilder extends React.Component{
     const styles = this.getStyles();
 
     return <div style={styles.container}>
-      <Tools setTool={(e, t)=>this.setTool(e, t)}/>
+      <Tools setTool={(e, t)=>this.setTool(e, t)} setBlockType={(e, t)=>this.setBlockType(e, t)}/>
       <Editor
         editorState      = {this.state.editorState}
-        blockRendererFn  = {this.blockRenderer}
+        blockRendererFn  = {BlockRenderer}
         customStyleMap   = {StyleMap}
         onChange         = {this.onChange}
         handleKeyCommand = {(c)=>this.handleKeyCommand(c)}

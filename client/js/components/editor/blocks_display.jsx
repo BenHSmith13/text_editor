@@ -14,21 +14,23 @@ export default class BlocksDisplay extends React.Component{
     return {
       container: {
         position: 'fixed',
+        width: '100%',
+        left: '0px',
         top: this.state.visible ? '75vh' : '95vh',
         transition: 'all .3s ease'
       },
       icon: {
         fontSize: '3em',
         position: 'absolute',
-        right: '-175px',
+        right: '18%',
         cursor: 'pointer'
       },
       blocks: {
         position: 'relative',
-        left: '-10%',
+        left: '15%',
         backgroundColor: 'SlateGray',
         color: 'snow',
-        width: '122%',
+        width: '70%',
         marginTop: '75px',
         height: 'calc(25vh - 70px)',
         overflowY: 'scroll',

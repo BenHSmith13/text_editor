@@ -60,12 +60,27 @@ export default class Tools extends React.Component{
     const styles = this.getStyles();
 
     return <div style={styles.container}>
-      <div onClick={(e) => this.props.setTool(e, 'BOLD')} style={{...styles.inline('BOLD'), ...styles.bold}}>B</div>
-      <div onClick={(e) => this.props.setTool(e, 'ITALIC')} style={{...styles.inline('ITALIC'), ...styles.italic}}>I</div>
-      <div onClick={(e) => this.props.setTool(e, 'UNDERLINE')} style={{...styles.inline('UNDERLINE'), ...styles.underline}}>U</div>
-      <div onClick={(e) => this.props.setTool(e, 'SUBSCRIPT')} style={styles.inline('SUBSCRIPT')}>A<span style={styles.subscript}>2</span></div>
-      <div onClick={(e) => this.props.setTool(e, 'SUPERSCRIPT')} style={styles.inline('SUPERSCRIPT')}>A<span style={styles.superScript}>2</span></div>
-      <div onClick={(e) => this.props.setTool(e, 'CUSTOM')} style={{...styles.inline('CUSTOM'), ...styles.custom}}>Add Custom</div>
+      <div>
+        <div onClick={(e) => this.props.setBlockType(e, 'header-one')} style={styles.inline('header-one')}>H1</div>
+        <div onClick={(e) => this.props.setBlockType(e, 'header-two')} style={styles.inline('header-two')}>H2</div>
+        <div onClick={(e) => this.props.setBlockType(e, 'header-three')} style={styles.inline('header-three')}>H3</div>
+        <div onClick={(e) => this.props.setBlockType(e, 'header-four')} style={styles.inline('header-four')}>H4</div>
+        <div onClick={(e) => this.props.setBlockType(e, 'header-five')} style={styles.inline('header-five')}>H5</div>
+        <div onClick={(e) => this.props.setBlockType(e, 'header-six')} style={styles.inline('header-six')}>H6</div>
+        <div onClick={(e) => this.props.setBlockType(e, 'blockquote')} style={styles.inline('blockquote')}>Blockquote</div>
+        <div onClick={(e) => this.props.setBlockType(e, 'blockquote')} style={styles.inline('blockquote')}>Blockquote</div>
+        <div onClick={(e) => this.props.setBlockType(e, 'unordered-list-item')} style={styles.inline('unordered-list-item')}>UL</div>
+        <div onClick={(e) => this.props.setBlockType(e, 'ordered-list-item')} style={styles.inline('ordered-list-item')}>OL</div>
+        <div onClick={(e) => this.props.setBlockType(e, 'code-block')} style={styles.inline('code-block')}>Code Block</div>
+      </div>
+      <div>
+        <div onClick={(e) => this.props.setTool(e, 'BOLD')} style={{...styles.inline('BOLD'), ...styles.bold}}>B</div>
+        <div onClick={(e) => this.props.setTool(e, 'ITALIC')} style={{...styles.inline('ITALIC'), ...styles.italic}}>I</div>
+        <div onClick={(e) => this.props.setTool(e, 'UNDERLINE')} style={{...styles.inline('UNDERLINE'), ...styles.underline}}>U</div>
+        <div onClick={(e) => this.props.setTool(e, 'SUBSCRIPT')} style={styles.inline('SUBSCRIPT')}>A<span style={styles.subscript}>2</span></div>
+        <div onClick={(e) => this.props.setTool(e, 'SUPERSCRIPT')} style={styles.inline('SUPERSCRIPT')}>A<span style={styles.superScript}>2</span></div>
+        <div onClick={(e) => this.props.setTool(e, 'CUSTOM')} style={{...styles.inline('CUSTOM'), ...styles.custom}}>Add Custom</div>
+      </div>
     </div>;
   }
 }

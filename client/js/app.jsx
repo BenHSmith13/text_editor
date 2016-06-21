@@ -11,6 +11,8 @@ import DevTools               from './dev/dev_tools';
 import configureStore         from './store/configure_store';
 import jwt                    from './loaders/jwt';
 
+require('./components/editor/block_styles.css');
+
 // Polyfill es6 promises for IE
 es6Promise.polyfill();
 
