@@ -78,7 +78,9 @@ export default class Tools extends React.Component{
         <div onClick={(e) => this.props.setTool(e, 'UNDERLINE')} style={{...styles.inline('UNDERLINE'), ...styles.underline}}>U</div>
         <div onClick={(e) => this.props.setTool(e, 'SUBSCRIPT')} style={styles.inline('SUBSCRIPT')}>A<span style={styles.subscript}>2</span></div>
         <div onClick={(e) => this.props.setTool(e, 'SUPERSCRIPT')} style={styles.inline('SUPERSCRIPT')}>A<span style={styles.superScript}>2</span></div>
-        <div onClick={(e) => this.props.setTool(e, 'CUSTOM')} style={{...styles.inline('CUSTOM'), ...styles.custom}}>Add Custom</div>
+        {
+          //<div onClick={(e) => this.props.setTool(e, 'CUSTOM')} style={{...styles.inline('CUSTOM'), ...styles.custom}}>Add Custom</div>
+        }
       </div>
     </div>;
   }
