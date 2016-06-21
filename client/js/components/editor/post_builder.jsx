@@ -11,6 +11,7 @@ import Tools                                                from './tools.jsx';
 import StyleMap                                             from './style_map.jsx';
 import BlocksDisplay                                        from './blocks_display.jsx';
 import BlockRenderer                                        from './block_renderer.jsx';
+import Header                                               from './header.jsx';
 
 export default class PostBuilder extends React.Component{
   
@@ -91,6 +92,10 @@ export default class PostBuilder extends React.Component{
 
     //TODO: block rapper to set focus on editor
     return <div style={styles.container}>
+      <Header
+        updateTitle={(t)=>this.setState({title: t})}
+        updateAuthor={(a)=>this.setState({author: a})}
+      />
       <Tools setTool={(e, t)=>this.setTool(e, t)} setBlockType={(e, t)=>this.setBlockType(e, t)}/>
       <Editor
         editorState      = {this.state.editorState}

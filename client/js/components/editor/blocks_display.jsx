@@ -12,8 +12,8 @@ export default class BlocksDisplay extends React.Component{
 
   publish(){
     firebase.database().ref('posts').push({
-      title: this.props.title,
-      author: this.props.author,
+      title: this.props.title || 'No Title',
+      author: this.props.author || 'Unknown',
       data: JSON.stringify(this.props.raw)
     });
   }
