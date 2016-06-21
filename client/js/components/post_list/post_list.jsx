@@ -7,6 +7,14 @@ import _                  from 'lodash';
 export default class PostList extends React.Component{
   constructor(){
     super();
+    
+    this.state = {posts: null}
+  }
+
+  componentWillMount(){
+    firebase.database().ref('posts').on('value', (snapshot) => {
+      this.setState({posts: snapshot.val()})
+    });
   }
 
   getStyle(){
@@ -23,13 +31,12 @@ export default class PostList extends React.Component{
     }
   }
 
+
   render(){
     const styles = this.getStyle();
 
-    var posts = firebase.database().ref('posts');
-    console.log(posts);
-    var display = _.map(posts, (post)=>{
-      return <PostTag post={post}/>
+    var display = _.map(this.state.posts, (post, key)=>{
+      return <PostTag key={key} post={post} setPost={this.props.setPost}/>
     });
       
     return <div style={styles.container}>

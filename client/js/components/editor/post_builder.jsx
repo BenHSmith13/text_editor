@@ -18,12 +18,21 @@ export default class PostBuilder extends React.Component{
   constructor(props){
     super(props);
     this.state = {
-      editorState: this.initEditorState(props)
+      editorState: this.initEditorState(props),
+      title: props.post ? props.post.title : null,
+      author: props.post ? props.post.author : null,
     };
     this.onChange = (editorState) => {
       this.setState({editorState});
     };
   }
+
+  // componentWillMount(){
+  //   this.setState({
+  //     title: this.props.post ? this.props.post.title : null,
+  //     author: this.props.post ? this.props.post.author : null,
+  //   });
+  // }
 
   /**
    * Initializes the Editor state depending on the initial data
@@ -31,15 +40,15 @@ export default class PostBuilder extends React.Component{
    * @param props
    * @returns {*}, a draft Editor State
    */
-  initEditorState(props, decorator){
-    if (!props.text || (_.isObject(props.text) && _.isEmpty(props.text.toJSON()))) {
+  initEditorState(props, decorator) {
+    let text = props.post ? JSON.parse(props.post.data) : null;
+    if (!text) {
       return EditorState.createEmpty(decorator);
-    } else if (_.isObject(props.text)) {
-      return EditorState.createWithContent(convertFromRaw(props.text.toJSON()), decorator);
     } else {
-      return EditorState.createWithContent(ContentState.createFromText(props.text), decorator);
+      return EditorState.createWithContent(convertFromRaw(text), decorator);
     }
   }
+
 
   /**
    * Allows styling through key commands, the following commands work:
@@ -83,6 +92,13 @@ export default class PostBuilder extends React.Component{
         padding: '10px',
         marginTop: '20px',
         backgroundColor: '#F0E8D0', // ANTIQUE WHITE
+      },
+      back: {
+        position: 'absolute',
+        fontSize: '3.5em',
+        top: '10px',
+        left: '-18%',
+        cursor: 'pointer'
       }
     }
   }
@@ -92,9 +108,12 @@ export default class PostBuilder extends React.Component{
 
     //TODO: block rapper to set focus on editor
     return <div style={styles.container}>
+      <i className="glyphicon glyphicon-menu-left" style={styles.back} onClick={()=>this.props.back()}></i>
       <Header
         updateTitle={(t)=>this.setState({title: t})}
         updateAuthor={(a)=>this.setState({author: a})}
+        title = {this.state.title}
+        author = {this.state.author}
       />
       <Tools setTool={(e, t)=>this.setTool(e, t)} setBlockType={(e, t)=>this.setBlockType(e, t)}/>
       <Editor

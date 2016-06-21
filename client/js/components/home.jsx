@@ -27,7 +27,7 @@ class Home extends React.Component {
     };
 
     return <div style={containerStyle}>
-      {this.state.post || true ? <PostBuilder /> : <PostList setPost={(p)=>this.setState({post: p})}/>}
+      {this.state.post ? <PostBuilder post={this.state.post} back={()=>this.setState({post: null})} /> : <PostList setPost={(p)=>this.setState({post: p})}/>}
     </div>;
   }
 
