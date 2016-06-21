@@ -17,8 +17,16 @@ export default class PostBuilder extends React.Component{
   
   constructor(props){
     super(props);
+
+    this.compositeDecorator = new CompositeDecorator([
+      {
+        strategy: this.benStrategy,
+        component: this.benComponent
+      }
+    ]);
+
     this.state = {
-      editorState: this.initEditorState(props),
+      editorState: this.initEditorState(props, this.compositeDecorator),
       title: props.post ? props.post.title : null,
       author: props.post ? props.post.author : null,
     };
@@ -64,6 +72,26 @@ export default class PostBuilder extends React.Component{
     }
     return false;
   }
+
+  benStrategy(contentBlock, callback) {
+    let regex = /Ben/g;
+    const text = contentBlock.getText();
+    let matchArr, start;
+    while ((matchArr = regex.exec(text)) !== null) {
+      start = matchArr.index;
+      callback(start, start + matchArr[0].length);
+    }
+  }
+
+  benComponent = (props) => {
+    const style = {
+      color: 'green',
+      backgroundColor: 'black',
+      padding: '2px'
+    };
+
+    return <span {...props} style={style}>{props.children}</span>;
+  };
 
   /**
    * Sets the inline style of a selection, handled params are:
