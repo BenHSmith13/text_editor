@@ -75,6 +75,7 @@ export default class PostBuilder extends React.Component{
   getStyles(){
     return {
       container: {
+        position: 'relative',
         width: '800px',
         margin: 'auto',
         minHeight: '90vh',
@@ -88,6 +89,7 @@ export default class PostBuilder extends React.Component{
   render(){
     const styles = this.getStyles();
 
+    //TODO: block rapper to set focus on editor
     return <div style={styles.container}>
       <Tools setTool={(e, t)=>this.setTool(e, t)} setBlockType={(e, t)=>this.setBlockType(e, t)}/>
       <Editor
@@ -101,7 +103,11 @@ export default class PostBuilder extends React.Component{
         spellCheck
         stripPastedStyles
       />
-      <BlocksDisplay raw={convertToRaw(this.state.editorState.getCurrentContent())}/>
+      <BlocksDisplay
+        title={this.state.title}
+        author={this.state.author}
+        raw={convertToRaw(this.state.editorState.getCurrentContent())}
+      />
     </div>
   }
   

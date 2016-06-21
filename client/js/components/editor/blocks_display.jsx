@@ -10,6 +10,14 @@ export default class BlocksDisplay extends React.Component{
     }
   }
 
+  publish(){
+    firebase.database().ref('posts').push({
+      title: this.props.title,
+      author: this.props.author,
+      data: JSON.stringify(this.props.raw)
+    });
+  }
+
   getStyle(){
     return {
       container: {
@@ -37,7 +45,11 @@ export default class BlocksDisplay extends React.Component{
         padding: '15px',
         borderRadius: '7px',
         boxShadow: '0px 1px 1px 1px DimGray',
-  }
+      },
+      button: {
+        position: 'absolute',
+        left: '18%'
+      }
     }
   }
 
@@ -45,6 +57,7 @@ export default class BlocksDisplay extends React.Component{
     const styles = this.getStyle();
 
     return <div style={styles.container}>
+      <button className="btn btn-info" onClick={()=>this.publish()} style={styles.button}>Publish</button>
       <i className="glyphicon glyphicon-console" style={styles.icon} onClick={()=>this.setState({visible: !this.state.visible})}></i>
       <div style={styles.blocks}>
         {JSON.stringify(this.props.raw)}

@@ -1,10 +1,17 @@
 "use strict";
 
-import React                    from 'react';
-import assets                   from '../libs/assets';
+import React                         from 'react';
+import assets                        from '../libs/assets';
 import PostBuilder                   from './editor/post_builder.jsx';
+import PostList                      from './post_list/post_list.jsx';
 
 class Home extends React.Component {
+  constructor(){
+    super();
+    this.state = {
+      post: null
+    }
+  }
 
   render(){
 
@@ -20,7 +27,7 @@ class Home extends React.Component {
     };
 
     return <div style={containerStyle}>
-      <PostBuilder />
+      {this.state.post || true ? <PostBuilder /> : <PostList setPost={(p)=>this.setState({post: p})}/>}
     </div>;
   }
 
