@@ -41,7 +41,7 @@ export default class PostBuilder extends React.Component{
    * @returns {*}, a draft Editor State
    */
   initEditorState(props, decorator) {
-    let text = props.post ? JSON.parse(props.post.data) : null;
+    let text = props.post && props.post.data ? JSON.parse(props.post.data) : null;
     if (!text) {
       return EditorState.createEmpty(decorator);
     } else {
@@ -88,7 +88,7 @@ export default class PostBuilder extends React.Component{
         position: 'relative',
         width: '800px',
         margin: 'auto',
-        minHeight: '90vh',
+        minHeight: '91vh',
         padding: '10px',
         marginTop: '20px',
         backgroundColor: '#F0E8D0', // ANTIQUE WHITE

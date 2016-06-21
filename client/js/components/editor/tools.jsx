@@ -9,12 +9,12 @@ export default class Tools extends React.Component{
     return {
       container: {
         position: 'relative',
-        left: '-12px',
+        left: '-10px',
         backgroundColor: 'Ivory',
         display: this.props.hidden ? 'none' : 'block',
         marginTop: '0px',
         marginBottom: '10px',
-        width: 'calc(100% + 24px)',
+        width: 'calc(100% + 20px)',
         fontSize: '.9em',
         paddingLeft: '3px'
       },
@@ -67,7 +67,6 @@ export default class Tools extends React.Component{
         <div onClick={(e) => this.props.setBlockType(e, 'header-four')} style={styles.inline('header-four')}>H4</div>
         <div onClick={(e) => this.props.setBlockType(e, 'header-five')} style={styles.inline('header-five')}>H5</div>
         <div onClick={(e) => this.props.setBlockType(e, 'header-six')} style={styles.inline('header-six')}>H6</div>
-        <div onClick={(e) => this.props.setBlockType(e, 'blockquote')} style={styles.inline('blockquote')}>Blockquote</div>
         <div onClick={(e) => this.props.setBlockType(e, 'blockquote')} style={styles.inline('blockquote')}>Blockquote</div>
         <div onClick={(e) => this.props.setBlockType(e, 'unordered-list-item')} style={styles.inline('unordered-list-item')}>UL</div>
         <div onClick={(e) => this.props.setBlockType(e, 'ordered-list-item')} style={styles.inline('ordered-list-item')}>OL</div>

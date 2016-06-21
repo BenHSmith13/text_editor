@@ -24,14 +24,16 @@ export default class BlocksDisplay extends React.Component{
         position: 'fixed',
         width: '100%',
         left: '0px',
-        top: this.state.visible ? '75vh' : '95vh',
-        transition: 'all .3s ease'
+        top: this.state.visible ? '75vh' : '92vh',
+        transition: 'all .3s ease',
       },
       icon: {
         fontSize: '3em',
         position: 'absolute',
-        right: '18%',
-        cursor: 'pointer'
+        left: '18%',
+        cursor: 'pointer',
+        zIndex: '2',
+        marginTop: '5px'
       },
       blocks: {
         position: 'relative',
@@ -39,16 +41,18 @@ export default class BlocksDisplay extends React.Component{
         backgroundColor: 'SlateGray',
         color: 'snow',
         width: '70%',
-        marginTop: '75px',
-        height: 'calc(25vh - 70px)',
+        // marginTop: '75px',
+        height: '26vh',
         overflowY: 'scroll',
-        padding: '15px',
+        padding: '85px 15px 15px',
         borderRadius: '7px',
         boxShadow: '0px 1px 1px 1px DimGray',
       },
       button: {
+        marginTop: '10px',
         position: 'absolute',
-        left: '18%'
+        right: '18%',
+        zIndex: '2'
       }
     }
   }

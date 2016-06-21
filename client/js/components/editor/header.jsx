@@ -15,6 +15,9 @@ export default class Header extends React.Component{
         left: '-20px',
         padding: "5px 20px 20px",
         borderRadius: '10px'
+      },
+      title: {
+        marginBottom: '20px'
       }
     }
   }
@@ -24,7 +27,7 @@ export default class Header extends React.Component{
 
     return <div style={styles.header}>
       <h4>Title:</h4>
-      <input className="form-control" type="text" onChange={(e)=>this.props.updateTitle(e.target.value)} value={this.props.title}/>
+      <input style={styles.title} className="form-control" type="text" onChange={(e)=>this.props.updateTitle(e.target.value)} value={this.props.title}/>
       <h5>Author:</h5>
       <input className="form-control" type="text" onChange={(e)=>this.props.updateAuthor(e.target.value)} value={this.props.author}/>
     </div>

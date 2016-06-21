@@ -27,6 +27,10 @@ export default class PostList extends React.Component{
         padding: '10px',
         marginTop: '20px',
         backgroundColor: '#F0E8D0', // ANTIQUE WHITE
+      },
+      button: {
+        position: 'absolute',
+        right: '-100px'
       }
     }
   }
@@ -40,6 +44,7 @@ export default class PostList extends React.Component{
     });
       
     return <div style={styles.container}>
+      <button style={styles.button} className="btn btn-info" onClick={()=>this.props.setPost(true)}>New Post</button>
       {display}
     </div>
   }
